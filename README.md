@@ -11,8 +11,8 @@ This workflow documents input parameters for upstream steps to produce summary b
 2. Classify reads with kraken2
 3. Refine relative abundance estimates with bracken
 
-	2. create binary presence/absence matrix ([01_bracken_binary_matrix.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/01_bracken_binary_matrix.py))
-	3. estimate relative abundance of taxa ([02_bracken_validate_and_summarize_relabundance_RPKM.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/02_bracken_validate_and_summarize_relabundance_RPKM.py))
+	1. create binary presence/absence matrix ([01_bracken_binary_matrix.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/01_bracken_binary_matrix.py))
+	2. estimate relative abundance of taxa ([02_bracken_validate_and_summarize_relabundance_RPKM.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/02_bracken_validate_and_summarize_relabundance_RPKM.py))
 
 4. Analysis in R
 5. Produce heatmaps in R
@@ -24,9 +24,11 @@ Since I work with human-associated metagenomes, in addition to trimming with tri
 
 ### 2. Use kraken2 to classify reads by taxonomy
 
-**- 2.a: install kraken2 using conda**
-**- 2.b: install bracken using conda**
-**- 2.c: build kraken2 database(s)**
+**- 1. install kraken2 using conda**
+
+**- 2. install bracken using conda**
+
+**- 3. build kraken2 database(s)**
 
 *default kraken2 installation instructions suggest:*
 
