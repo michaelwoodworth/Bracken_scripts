@@ -24,11 +24,11 @@ Since I work with human-associated metagenomes, in addition to trimming with tri
 
 ### 2. Use kraken2 to classify reads by taxonomy
 
-**2.a: install kraken2 using conda**
+  1. install kraken2 using conda
 
-**2.b: install bracken using conda**
+  2. install bracken using conda
 
-**2.c: build kraken2 database(s)**
+  3. build kraken2 database(s)
 
 *default kraken2 installation instructions suggest:*
 
