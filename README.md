@@ -23,7 +23,7 @@ This workflow documents input parameters for upstream steps to produce summary b
 Since I work with human-associated metagenomes, in addition to trimming with trimmomatic, I usually attempt to remove reads aligning to reference human genomes.  This can be efficiently done in one step with the Huttenhower lab tool [kneaddata](https://huttenhower.sph.harvard.edu/kneaddata/).
 
 ### 2. Use kraken2 to classify reads by taxonomy
-This steps assumes that you have already installed kraken2 & bracken.
+This step assumes that you have already installed kraken2 & bracken.
 
 *default kraken2 installation instructions suggest:*
 
@@ -32,11 +32,12 @@ conda activate kraken
 kraken2-build --standard --threads 20 --db ${db_path}/${db_name}
 ```
 
-I have had difficulty using this command on a cluster (rsync errors, threading errors, etc).  As a workaround, the following files can be downloaded individually: 
+I have had difficulty using this command on a cluster (e.g. rsync errors, multi-threading errors).  As a workaround, the following files can be downloaded individually: 
 - ncbi taxonomy
 - kraken databases
 
 ```bash
+#activate conda environment
 conda activate kraken
 
 #download NCBI taxonomy
