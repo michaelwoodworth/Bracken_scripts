@@ -11,8 +11,7 @@ This workflow documents input parameters for upstream steps to produce summary b
 2. Classify reads with kraken2
 3. Refine relative abundance estimates with bracken
 
-	1. create binary presence/absence matrix ([01_bracken_binary_matrix.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/01_bracken_binary_matrix.py))
-	2. estimate relative abundance of taxa ([02_bracken_validate_and_summarize_relabundance_RPKM.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/02_bracken_validate_and_summarize_relabundance_RPKM.py))
+	1. estimate relative abundance of taxa ([01_bracken_summarize_relabundance.py](https://github.com/michaelwoodworth/AMRFinder_scripts/blob/master/01_bracken_summarize_relabundance.py))
 
 4. Analysis in R
 5. Produce heatmaps in R
@@ -77,10 +76,10 @@ bracken -d ${db_path}/${kraken_db_name} -i ${sample}.kreport -o ${sample}.bracke
 
 ### 3. Post-processing
 
-**01_bracken_validate_and_summarize_relabundance_RPKM.py** - this python script takes a directory containing ${sample}.bracken files as input and produces a summary tsv file with taxa as rows and samples as columns with relative abundance cell values.
+**01_bracken_summarize_relabundance.py** - this python script takes a directory containing ${sample}.bracken files as input and produces a summary tsv file with taxa as rows and samples as columns with relative abundance cell values.
 
 ```console
-usage: 01_bracken_validate_and_summarize_relabundance_RPKM.py [-h] -a  -m  -o  [-v] [-V]
+usage: 01_bracken_summarize_relabundance.py [-h] -a  -m  -o  [-v] [-V]
 
 Summarize relative abundance of kraken2/bracken classified 
 taxa for plots and analysis.
