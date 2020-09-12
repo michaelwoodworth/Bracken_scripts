@@ -76,28 +76,30 @@ bracken -d ${db_path}/${kraken_db_name} -i ${sample}.kreport -o ${sample}.bracke
 
 ### 3. Post-processing
 
-**01_bracken_summarize_relabundance.py** - this python script takes a directory containing ${sample}.bracken files as input and produces a summary tsv file with taxa as rows and samples as columns with relative abundance cell values.
+**01_bracken_summarize_relabundance.py** - this python script takes a directory containing ${sample}.bracken files as input and produces a summary file "relab_matrix.tsv" with taxa as rows, samples as columns, and relative abundance cell values.
 
 ```console
-usage: 01_bracken_summarize_relabundance.py [-h] -a  -m  -o  [-v] [-V]
+usage: 01_bracken_summarize_relabundance.py [-h] -b  -s  -o  [-m] [-v] [-r]
 
-Summarize relative abundance of kraken2/bracken classified 
-taxa for plots and analysis.
+Summarize taxonomic relative abundance from kraken2/bracken 
+for plots & analysis.
 
 This script takes the following input:
-- directory containing ${sample}.bracken tsv files
+- directory containing bracken tsv files
 
-The script output is a tsv matrix with unique taxa across all samples as rows, samples as columns, and bracken-estimated relative abundance of reads.
+Taxa with relative abundance values are returned with following output:
+- specified output file & path containting a single tsv file with 
+taxa as rows, samples as columns, and relative abundance as cell values.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -a , --amrfinder_tsv_path 
-                        Please specify directory path containing filtered
-                        AMRFinder tsv files.
-  -m , --coverage_magic_path 
-                        Please specify directory path containing coverage
-                        magic path.
+  -b , --bracken_dir    Please specify directory path containing bracken
+                        output files.
+  -s , --suffix         Please specify bracken file suffix (e.g. *.bracken).
   -o , --output         Please specify output file path (& optional prefix).
+  -m , --minimum_abundance 
+                        Specify minimum abundance to filter taxa to include.
+                        Default 0.001
   -v, --verbose         Toggle volume of printed output.
-  -V, --validate        Write genes_to_validate.tsv and deduplicated.tsv.
+  -r, --reads_please    Toggle to produce reads_matrix from bracken output.
 ```
