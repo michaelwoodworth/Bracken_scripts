@@ -21,7 +21,8 @@ def parse_bracken_tsvs(input_directory, minimum_abundance, verbose):
 	# generate dictionary of unique taxa & samples
 	# initialize dictionary & list objects
 	os.chdir(input_directory)				# change to input directory
-	file_list = glob.glob("*.bracken")		# generate list of *.bracken files
+	file_list = glob.glob("*.G.bracken")		# generate list of genus *.bracken files
+	#file_list = glob.glob("*.S.bracken")		# generate list of species *.bracken files
 	unique_taxa_list = []					# initialize taxa list
 	MG_IDs = []
 	id_mgid_taxon_reads_relab = defaultdict(list)
@@ -34,8 +35,8 @@ def parse_bracken_tsvs(input_directory, minimum_abundance, verbose):
 
 		# get list of mg_ids
 		# choose filename delimeter:
-		mg_id = file.rstrip().split('_')[0]
-		#mg_id = file.rstrip().split('.')[0]
+		#mg_id = file.rstrip().split('_')[0]
+		mg_id = file.rstrip().split('.')[0]
 
 		if mg_id not in MG_IDs:
 			MG_IDs.append(mg_id)
@@ -116,11 +117,13 @@ def generate_relab_matrix(unique_taxa_list, MG_IDs,
 	print('Converting completed matrices to dataframe...')
 
 	relab_matrix = pd.DataFrame(matrix, index = unique_taxa_list)
+	relab_matrix = relab_matrix.loc[(relab_matrix!=0).any(1)]
 	relab_matrix.sort_index(inplace=True)
 	relab_matrix.sort_index(axis=1, inplace=True)
 
 	if reads_please:
 		reads_matrix = pd.DataFrame(r_matrix, index = unique_taxa_list)
+		reads_matrix = reads_matrix.loc[(reads_matrix!=0).any(1)]
 		reads_matrix.sort_index(inplace=True)
 		reads_matrix.sort_index(axis=1, inplace=True)	
 
